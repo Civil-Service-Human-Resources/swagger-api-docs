@@ -1,0 +1,129 @@
+swagger: '2.0'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+  termsOfService: 'urn:tos'
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+host: 'localhost:8080'
+basePath: /
+tags:
+  - name: Vacancy Service
+    description: All apis relating to jobs and vacancies
+  - name: vacancy-controller
+    description: Operations pertaining to vacancies for jobs in Government
+paths:
+  /vacancy/search:
+    post:
+      tags:
+        - vacancy-controller
+      summary: Search for vacancies by location and keyword with support for pagination
+      operationId: searchUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: searchParameters
+          description: The values supplied to perform the search with
+          required: true
+          schema:
+            $ref: '#/definitions/VacancySearchParameters'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Page«Vacancy»'
+definitions:
+  Page«Vacancy»:
+    type: object
+    properties:
+      content:
+        type: array
+        items:
+          $ref: '#/definitions/Vacancy'
+      first:
+        type: boolean
+      last:
+        type: boolean
+      number:
+        type: integer
+        format: int32
+      numberOfElements:
+        type: integer
+        format: int32
+      size:
+        type: integer
+        format: int32
+      sort:
+        $ref: '#/definitions/Sort'
+      totalElements:
+        type: integer
+        format: int64
+      totalPages:
+        type: integer
+        format: int32
+  Sort:
+    type: object
+  Vacancy:
+    type: object
+    properties:
+      closingDate:
+        type: string
+      contactDepartment:
+        type: string
+      contactEmail:
+        type: string
+      contactName:
+        type: string
+      contactTelephone:
+        type: string
+      description:
+        type: string
+      eligibility:
+        type: string
+      grade:
+        type: string
+      id:
+        type: integer
+        format: int64
+      location:
+        type: string
+      numberVacancies:
+        type: integer
+        format: int32
+      responsibilities:
+        type: string
+      role:
+        type: string
+      salaryMax:
+        type: integer
+        format: int32
+      salaryMin:
+        type: integer
+        format: int32
+      title:
+        type: string
+      workingHours:
+        type: number
+  VacancySearchParameters:
+    type: object
+    required:
+      - location
+    properties:
+      department:
+        type: array
+        description: id of one or more departments to search vacancies for
+        items:
+          type: string
+      keyword:
+        type: string
+        description: word found in title or description of vacancy
+      location:
+        type: string
+        description: location of the vacancy
+    description: The parameters allowed for when searching for vacancies
