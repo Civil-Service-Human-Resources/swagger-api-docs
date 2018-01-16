@@ -8,31 +8,34 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0'
+host: 'localhost:8080'
 basePath: /
 tags:
-  - name: Vacancy Service
-    description: All apis relating to jobs and vacancies
   - name: vacancy-controller
     description: Operations pertaining to vacancies for jobs in Government
+  - name: Vacancy Service
+    description: Apis relating to jobs and vacancies
 paths:
   /vacancy:
     get:
       tags:
         - vacancy-controller
-      summary: find all vacancies
-      operationId:
+      summary: Find all vacancies with support for pagination
+      operationId: findAll
+      consumes:
+        - application/json
       produces:
-        - applicaton/json
+        - application/json
       responses:
         '200':
-        description: OK
-        schema:
-          $ref: '#definitions/Vacancy'
+          description: OK
+          schema:
+            $ref: '#/definitions/Page«Vacancy»'
     post:
       tags:
         - vacancy-controller
       summary: create
-      operationId: createUsingPOST
+      operationId: create
       consumes:
         - application/json
       produces:
@@ -54,7 +57,7 @@ paths:
       tags:
         - vacancy-controller
       summary: Search for vacancies by location and keyword with support for pagination
-      operationId: searchUsingPOST
+      operationId: search
       consumes:
         - application/json
       produces:
@@ -71,12 +74,59 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Page«Vacancy»'
-  /vacancy/{vacancyId}:
+  '/vacancy/search/location/{location}':
     get:
       tags:
-        - VacancyContoller
+        - vacancy-controller
+      summary: Search for vacancies by location
+      operationId: searchByLocation
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: location
+          in: path
+          description: location
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Page«Vacancy»'
+  '/vacancy/search/location/{location}/keyword/{keyword}':
+    get:
+      tags:
+        - vacancy-controller
+      summary: Search for vacancies by location and keyword with support for pagination
+      operationId: searchByLocationAndKeyword
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: location
+          in: path
+          description: location
+          required: true
+          type: string
+        - name: keyword
+          in: path
+          description: keyword
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Page«Vacancy»'
+  '/vacancy/{vacancyId}':
+    get:
+      tags:
+        - vacancy-controller
       summary: Find a specific vacancy
-      operationId: findByIdUsingGET
+      operationId: findById
       consumes:
         - application/json
       produces:
@@ -93,15 +143,11 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Vacancy'
-        '500':
-          description: 500 message
-          schema:
-            $ref: '#/definitions/Error'
     put:
       tags:
         - vacancy-controller
       summary: update
-      operationId: updateUsingPUT
+      operationId: update
       consumes:
         - application/json
       produces:
@@ -127,8 +173,8 @@ paths:
     delete:
       tags:
         - vacancy-controller
-      summary: Delete an existing vacancy in the Vacancies Repository
-      operationId: deleteByIdUsingDELETE
+      summary: delete
+      operationId: delete
       consumes:
         - application/json
       produces:
@@ -195,7 +241,7 @@ definitions:
       responsibilities:
         type: string
       workingHours:
-        type: number
+        type: string
       closingDate:
         type: string
       contactName:
@@ -234,5 +280,4 @@ definitions:
         type: string
         description: location of the vacancy
     description: The parameters allowed for when searching for vacancies
-  Error:
-    type: object
+
