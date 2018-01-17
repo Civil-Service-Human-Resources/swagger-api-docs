@@ -207,7 +207,7 @@ definitions:
         type: string
       closingDate:
         type: string
-        example: 'yyyy-MM-ddTHH:mm:ssZ e.g. 1976-05-26T00:00:00+0000'
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
       contactName:
         type: string
       contactDepartment:
@@ -227,6 +227,15 @@ definitions:
       numberVacancies:
         type: integer
         format: int32
+      governmentOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      internalOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      publicOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
       department:
         $ref: '#/definitions/Department'
   VacancySearchParameters:
