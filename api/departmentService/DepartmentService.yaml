@@ -12,7 +12,7 @@ host: 'localhost:8080'
 basePath: /
 tags:
   - name: Department Service
-    description: Apis relating to jobs and departments
+    description: Apis relating to deparments
   - name: department-controller
     description: Department Controller
 paths:
@@ -34,8 +34,8 @@ paths:
     post:
       tags:
         - department-controller
-      summary: create
-      operationId: createUsingPOST
+      summary: Create a department
+      operationId: create
       consumes:
         - application/json
       produces:
@@ -77,8 +77,8 @@ paths:
     put:
       tags:
         - department-controller
-      summary: update
-      operationId: updateUsingPUT
+      summary: Update a department
+      operationId: update
       consumes:
         - application/json
       produces:
@@ -104,8 +104,8 @@ paths:
     delete:
       tags:
         - department-controller
-      summary: deleteById
-      operationId: deleteByIdUsingDELETE
+      summary: Delete a department
+      operationId: delete
       consumes:
         - application/json
       produces:
