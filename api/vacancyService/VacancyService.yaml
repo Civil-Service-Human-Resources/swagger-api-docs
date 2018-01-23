@@ -76,55 +76,6 @@ paths:
             $ref: '#/definitions/Page«Vacancy»'
         '400':
           description: A bad request has been made such as search parameters not being supplied or missing mandatory parameters.
-  '/vacancy/search/location/{location}':
-    get:
-      tags:
-        - vacancy-controller
-      summary: Search for vacancies by location
-      operationId: searchByLocation
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: location
-          in: path
-          description: location
-          required: true
-          type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Page«Vacancy»'
-      deprecated: true
-  '/vacancy/search/location/{location}/keyword/{keyword}':
-    get:
-      tags:
-        - vacancy-controller
-      summary: Search for vacancies by location and keyword with support for pagination
-      operationId: searchByLocationAndKeyword
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: location
-          in: path
-          description: location
-          required: true
-          type: string
-        - name: keyword
-          in: path
-          description: keyword
-          required: true
-          type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Page«Vacancy»'
-      deprecated: true
   '/vacancy/{vacancyId}':
     get:
       tags:
