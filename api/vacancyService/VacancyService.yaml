@@ -267,7 +267,6 @@ definitions:
     properties:
       place:
         type: string
-        example: 'BS8 3PA' or 'BS8'
         examples:
           fullPostcode:
             value: BS8 3PA
