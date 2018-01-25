@@ -236,6 +236,14 @@ definitions:
       publicOpeningDate:
         type: string
         example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      longitude:
+        type: number
+        format: double
+        example: '51.454929'
+      latitude:
+        type: number
+        format: double
+        example: '-2.627811'
       department:
         $ref: '#/definitions/Department'
   VacancySearchParameters:
@@ -252,6 +260,24 @@ definitions:
         type: string
         description: word found in title or description of vacancy
       location:
-        type: string
-        description: location of the vacancy
+        $ref: '#/definitions/Location'
     description: The parameters allowed when searching for vacancies
+  Location:
+    type: object
+    properties:
+      place:
+        type: string
+        examples:
+          fullPostcode:
+            value: BS8 3PA
+            summary: A full postcode
+          partialPostcode:
+            value: BS8
+            summary: a partial postcode
+          town:
+            value: Bristol
+            summary: name of a city, town, village, hamlet etc
+      radius:
+        type: integer
+        example: '30'
+        summary: Distance in miles from Location.place to search for vacancies
