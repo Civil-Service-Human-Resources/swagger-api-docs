@@ -16,12 +16,12 @@ tags:
   - name: location-service-controller
     description: Location Service Controller
 paths:
-  /locationservice:
+  /findlocation:
     get:
       tags:
         - location-service-controller
-      summary: Find Coordinates
-      operationId: findCoordinates
+      summary: Find latitude and longitude coordinates identifiing where either a placename prefix or full or partial postcode is.
+      operationId: Find Location
       consumes:
         - application/json
       produces:
@@ -29,9 +29,8 @@ paths:
       parameters:
         - name: searchTerm
           in: path
-          description: searchTerm
+          description: A full or partial postcode, or a full or prefix place name.
           required: true
-          type: string
       responses:
         '200':
           description: OK
