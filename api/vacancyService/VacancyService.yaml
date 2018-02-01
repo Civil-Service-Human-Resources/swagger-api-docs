@@ -56,7 +56,7 @@ paths:
     post:
       tags:
         - vacancy-controller
-      summary: Search for vacancies by location and keyword with support for pagination
+      summary: Search for vacancies by with support for pagination. Search parameters are supplied in a json object called VacancySearchParameters which contains the properties that can be used to search for vacancies.  Note -  VacancySearchParameters.location is mandatory.
       operationId: search
       consumes:
         - application/json
@@ -74,55 +74,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Page«Vacancy»'
-  '/vacancy/search/location/{location}':
-    get:
-      tags:
-        - vacancy-controller
-      summary: Search for vacancies by location
-      operationId: searchByLocation
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: location
-          in: path
-          description: location
-          required: true
-          type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Page«Vacancy»'
-      deprecated: true
-  '/vacancy/search/location/{location}/keyword/{keyword}':
-    get:
-      tags:
-        - vacancy-controller
-      summary: Search for vacancies by location and keyword with support for pagination
-      operationId: searchByLocationAndKeyword
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: location
-          in: path
-          description: location
-          required: true
-          type: string
-        - name: keyword
-          in: path
-          description: keyword
-          required: true
-          type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Page«Vacancy»'
-      deprecated: true
+        '400':
+          description: A bad request has been made such as search parameters not being supplied or missing mandatory parameters.
   '/vacancy/{vacancyId}':
     get:
       tags:
@@ -254,7 +207,7 @@ definitions:
         type: string
       closingDate:
         type: string
-        example: 'yyyy-MM-ddTHH:mm:ssZ e.g. 1976-05-26T00:00:00+0000'
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
       contactName:
         type: string
       contactDepartment:
@@ -274,6 +227,15 @@ definitions:
       numberVacancies:
         type: integer
         format: int32
+      governmentOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      internalOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      publicOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
       department:
         $ref: '#/definitions/Department'
   VacancySearchParameters:
@@ -292,4 +254,4 @@ definitions:
       location:
         type: string
         description: location of the vacancy
-    description: The parameters allowed for when searching for vacancies
+    description: The parameters allowed when searching for vacancies
