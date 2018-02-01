@@ -27,10 +27,11 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: searchTerm
-          in: path
-          description: A full or partial postcode, or a full or prefix place name.
-          required: true
+         - name: searchTerm
+           in: path
+           description: Place name or full/partial postcode
+           type: string
+           required: true
       responses:
         '200':
           description: OK
