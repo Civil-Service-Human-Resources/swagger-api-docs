@@ -76,6 +76,10 @@ paths:
             $ref: '#/definitions/Page«Vacancy»'
         '400':
           description: A bad request has been made such as search parameters not being supplied or missing mandatory parameters.
+        '500':
+          description: An internal error occurred for example when performing the search for vacancies
+        '503':
+          description: A service, such as the location service used to transform a place into coordinates, is not available.
   '/vacancy/{vacancyId}':
     get:
       tags:
