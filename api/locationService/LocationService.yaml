@@ -20,18 +20,20 @@ paths:
     get:
       tags:
         - location-service-controller
-      summary: Find latitude and longitude coordinates identifiing where either a placename prefix or full or partial postcode is.
-      operationId: Find Location
+      summary: >-
+        Find latitude and longitude coordinates identifiing where either a
+        placename prefix or full or partial postcode is.
+      operationId: findLocation
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-         - name: searchTerm
-           in: path
-           description: Place name or full/partial postcode
-           type: string
-           required: true
+        - name: searchTerm
+          in: path
+          description: Place name or full/partial postcode
+          type: string
+          required: true
       responses:
         '200':
           description: OK
@@ -44,6 +46,9 @@ definitions:
       latitude:
         type: number
         format: double
+        example: 51.5444326
       longitude:
         type: number
         format: double
+        example: -2.4509024
+
