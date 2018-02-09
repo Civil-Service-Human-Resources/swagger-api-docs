@@ -56,7 +56,11 @@ paths:
     post:
       tags:
         - vacancy-controller
-      summary: Search for vacancies by with support for pagination. Search parameters are supplied in a json object called VacancySearchParameters which contains the properties that can be used to search for vacancies.  Note -  VacancySearchParameters.location is mandatory.
+      summary: >-
+        Search for vacancies by with support for pagination. Search parameters
+        are supplied in a json object called VacancySearchParameters which
+        contains the properties that can be used to search for vacancies.  Note
+        -  VacancySearchParameters.location is mandatory.
       operationId: search
       consumes:
         - application/json
@@ -75,11 +79,17 @@ paths:
           schema:
             $ref: '#/definitions/Page«Vacancy»'
         '400':
-          description: A bad request has been made such as search parameters not being supplied or missing mandatory parameters.
+          description: >-
+            A bad request has been made such as search parameters not being
+            supplied or missing mandatory parameters.
         '500':
-          description: An internal error occurred for example when performing the search for vacancies
+          description: >-
+            An internal error occurred for example when performing the search
+            for vacancies
         '503':
-          description: A service, such as the location service used to transform a place into coordinates, is not available.
+          description: >-
+            A service, such as the location service used to transform a place
+            into coordinates, is not available.
   '/vacancy/{vacancyId}':
     get:
       tags:
@@ -265,13 +275,21 @@ definitions:
         description: word found in title or description of vacancy
       location:
         $ref: '#/definitions/Location'
+      salaryMin:
+        type: integer
+        description: the minimum salary
+        example: 20000
+      salaryMax:
+        type: integer
+        description: the maximum salary
+        example: 30000
     description: The parameters allowed when searching for vacancies
   Location:
     type: object
     properties:
       place:
         type: string
-        examples:
+        example:
           fullPostcode:
             value: BS8 3PA
             summary: A full postcode
@@ -280,8 +298,8 @@ definitions:
             summary: a partial postcode
           town:
             value: Bristol
-            summary: name of a city, town, village, hamlet etc
+            summary: 'name of a city, town, village, hamlet etc'
       radius:
         type: integer
         example: '30'
-        summary: Distance in miles from Location.place to search for vacancies
+        description: Distance in miles from Location.place to search for vacancies
