@@ -289,7 +289,7 @@ definitions:
     properties:
       place:
         type: string
-        examples:
+        example:
           fullPostcode:
             value: BS8 3PA
             summary: A full postcode
@@ -302,4 +302,4 @@ definitions:
       radius:
         type: integer
         example: '30'
-        summary: Distance in miles from Location.place to search for vacancies
+        description: Distance in miles from Location.place to search for vacancies
