@@ -289,16 +289,7 @@ definitions:
     properties:
       place:
         type: string
-        example:
-          fullPostcode:
-            value: BS8 3PA
-            summary: A full postcode
-          partialPostcode:
-            value: BS8
-            summary: a partial postcode
-          town:
-            value: Bristol
-            summary: 'name of a city, town, village, hamlet etc'
+        description: 'One of a full post code, partial post code or name of a city, town, village, hamlet etc'
       radius:
         type: integer
         example: '30'
