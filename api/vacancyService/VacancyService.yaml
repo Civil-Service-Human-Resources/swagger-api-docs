@@ -212,6 +212,8 @@ definitions:
         type: string
       description:
         type: string
+      shortDescription:
+        type: string
       location:
         type: string
       grade:
