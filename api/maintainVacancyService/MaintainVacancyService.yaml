@@ -11,29 +11,13 @@ info:
 host: 'localhost:8080'
 basePath: /
 tags:
-  - name: vacancy-controller
-    description: Operations pertaining to vacancies for jobs in Government
-  - name: Vacancy Service
-    description: Apis relating to jobs and vacancies
+  - name: Maintain Vacancy Service
+    description: Create, Update and delete operations pertaining to vacancies for jobs in Government
 paths:
   /vacancy:
-    get:
-      tags:
-        - vacancy-controller
-      summary: Find all vacancies with support for pagination
-      operationId: findAll
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Page«Vacancy»'
     post:
       tags:
-        - vacancy-controller
+        - maintain-vacancy-controller
       summary: create
       operationId: create
       consumes:
@@ -52,69 +36,9 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Vacancy'
-  /vacancy/search:
-    post:
-      tags:
-        - vacancy-controller
-      summary: >-
-        Search for vacancies by with support for pagination. Search parameters
-        are supplied in a json object called VacancySearchParameters which
-        contains the properties that can be used to search for vacancies.  Note
-        -  VacancySearchParameters.location is mandatory.
-      operationId: search
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: searchParameters
-          description: The values supplied to perform the search with
-          required: true
-          schema:
-            $ref: '#/definitions/VacancySearchParameters'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Page«Vacancy»'
-        '400':
-          description: >-
-            A bad request has been made such as search parameters not being
-            supplied or missing mandatory parameters.
-        '500':
-          description: >-
-            An internal error occurred for example when performing the search
-            for vacancies
-        '503':
-          description: >-
-            A service, such as the location service used to transform a place
-            into coordinates, is not available.
-  '/vacancy/{vacancyId}':
-    get:
-      tags:
-        - vacancy-controller
-      summary: Find a specific vacancy
-      operationId: findById
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: vacancyId
-          in: path
-          description: vacancyId
-          required: true
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Vacancy'
     put:
       tags:
-        - vacancy-controller
+        - maintain-vacancy-controller
       summary: update
       operationId: update
       consumes:
@@ -141,7 +65,7 @@ paths:
             $ref: '#/definitions/Vacancy'
     delete:
       tags:
-        - vacancy-controller
+        - maintain-vacancy-controller
       summary: delete
       operationId: delete
       consumes:
@@ -260,46 +184,3 @@ definitions:
         example: '-2.627811'
       department:
         $ref: '#/definitions/Department'
-  VacancySearchParameters:
-    type: object
-    required:
-      - location
-    properties:
-      department:
-        type: array
-        description: id of one or more departments to search vacancies for
-        items:
-          type: string
-      keyword:
-        type: string
-        description: word found in title or description of vacancy
-      location:
-        $ref: '#/definitions/Location'
-      salaryMin:
-        type: integer
-        description: the minimum salary
-        example: 20000
-      salaryMax:
-        type: integer
-        description: the maximum salary
-        example: 30000
-    description: The parameters allowed when searching for vacancies
-  Location:
-    type: object
-    properties:
-      place:
-        type: string
-        examples:
-          fullPostcode:
-            value: BS8 3PA
-            summary: A full postcode
-          partialPostcode:
-            value: BS8
-            summary: a partial postcode
-          town:
-            value: Bristol
-            summary: 'name of a city, town, village, hamlet etc'
-      radius:
-        type: integer
-        example: '30'
-        summary: Distance in miles from Location.place to search for vacancies
