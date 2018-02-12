@@ -205,9 +205,6 @@ definitions:
       id:
         type: integer
         format: int64
-      identifier:
-        type: integer
-        format: int64
       title:
         type: string
       description:
@@ -292,7 +289,16 @@ definitions:
     properties:
       place:
         type: string
-        description: 'One of a full post code, partial post code or name of a city, town, village, hamlet etc'
+        example:
+          fullPostcode:
+            value: BS8 3PA
+            summary: A full postcode
+          partialPostcode:
+            value: BS8
+            summary: a partial postcode
+          town:
+            value: Bristol
+            summary: 'name of a city, town, village, hamlet etc'
       radius:
         type: integer
         example: '30'
