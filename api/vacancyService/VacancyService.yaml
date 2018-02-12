@@ -112,6 +112,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Vacancy'
+        '410':
+          description: GONE - The vacancy is no longer available
     put:
       tags:
         - vacancy-controller
