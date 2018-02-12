@@ -205,6 +205,9 @@ definitions:
       id:
         type: integer
         format: int64
+      identifier:
+        type: integer
+        format: int64
       title:
         type: string
       description:
