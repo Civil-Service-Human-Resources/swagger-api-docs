@@ -216,6 +216,7 @@ definitions:
         type: string
       shortDescription:
         type: string
+        maxLength: 300
       location:
         type: string
       grade:
