@@ -203,6 +203,22 @@ definitions:
     type: object
   Vacancy:
     type: object
+    required:
+      - identifier
+      - title
+      - description
+      - location
+      - grade
+      - role
+      - responsibilities
+      - workingHours
+      - closingDate
+      - contactName
+      - contactDepartment
+      - contactEmail
+      - contactTelephone
+      - eligibility
+      - salaryMin
     properties:
       id:
         type: integer
@@ -269,7 +285,7 @@ definitions:
         $ref: '#/definitions/Department'
       displayCscContent:
         type: boolean
-        description: Whether or not to display the  CS Commissioners Content
+        description: Whether or not to display the CS Commissioners Content
   VacancySearchParameters:
     type: object
     required:
