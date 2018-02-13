@@ -113,7 +113,9 @@ paths:
           schema:
             $ref: '#/definitions/Vacancy'
         '410':
-          description: GONE - The vacancy is no longer available
+          description: Vacancy closed
+          schema:
+            $ref: '#/definitions/VacancyError'
     put:
       tags:
         - vacancy-controller
@@ -207,9 +209,6 @@ definitions:
       id:
         type: integer
         format: int64
-      identifier:
-        type: integer
-        format: int64
       title:
         type: string
       description:
@@ -248,25 +247,90 @@ definitions:
       numberVacancies:
         type: integer
         format: int32
-      governmentOpeningDate:
-        type: string
-        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
-      internalOpeningDate:
-        type: string
-        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
-      publicOpeningDate:
-        type: string
-        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
       longitude:
         type: number
         format: double
-        example: '51.454929'
       latitude:
         type: number
         format: double
-        example: '-2.627811'
       department:
         $ref: '#/definitions/Department'
+  VacancyError:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: string
+      message:
+        type: string
+      status:
+        type: string
+        enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
   VacancySearchParameters:
     type: object
     required:
