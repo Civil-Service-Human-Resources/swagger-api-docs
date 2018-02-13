@@ -209,6 +209,9 @@ definitions:
       id:
         type: integer
         format: int64
+      identifier:
+        type: integer
+        format: int64
       title:
         type: string
       description:
@@ -247,12 +250,23 @@ definitions:
       numberVacancies:
         type: integer
         format: int32
+      governmentOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      internalOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
+      publicOpeningDate:
+        type: string
+        example: 'yyyy-MM-ddTHH:mm:ss.SSSZ e.g. 1976-05-26T00:00:00+0000'
       longitude:
         type: number
         format: double
+        example: '51.454929'
       latitude:
         type: number
         format: double
+        example: '-2.627811'
       department:
         $ref: '#/definitions/Department'
   VacancyError:
