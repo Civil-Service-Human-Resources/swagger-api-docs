@@ -288,6 +288,9 @@ definitions:
       displayCscContent:
         type: boolean
         description: Whether or not to display the CS Commissioners Content
+      selectionProcessDetails:
+        type: string
+        description: Information about the selection process
   VacancyError:
     type: object
     properties:
@@ -330,7 +333,9 @@ definitions:
     properties:
       place:
         type: string
-        description: 'One of a full post code, partial post code or name of a city, town, village, hamlet etc'
+        description: >-
+          One of a full post code, partial post code or name of a city, town,
+          village, hamlet etc
       radius:
         type: integer
         example: '30'
