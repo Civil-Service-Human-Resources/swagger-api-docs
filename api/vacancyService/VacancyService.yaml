@@ -175,8 +175,7 @@ definitions:
         type: string
       disabilityLogo:
         type: string
-        description: There are three levels of disability confident employers
-        example: Committed, Employer, Leader
+        description: 'There are three levels of disability confident employers and one of "Committed", "Leader", "Employer" or no value'
   Page«Vacancy»:
     type: object
     properties:

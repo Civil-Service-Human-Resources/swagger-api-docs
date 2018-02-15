@@ -131,6 +131,9 @@ definitions:
         format: int64
       name:
         type: string
+      disabilityLogo:
+        type: string
+        description: 'There are three levels of disability confident employers and one of "Committed", "Leader", "Employer" or no value'
   Page«Department»:
     type: object
     properties:
