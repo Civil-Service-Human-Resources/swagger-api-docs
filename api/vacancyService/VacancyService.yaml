@@ -291,6 +291,10 @@ definitions:
       selectionProcessDetails:
         type: string
         description: Information about the selection process
+      disabilityLogo:
+        type: string
+        description: There are three levels of disability confident employers
+        example: Committed, Employer, Leader
   VacancyError:
     type: object
     properties:
