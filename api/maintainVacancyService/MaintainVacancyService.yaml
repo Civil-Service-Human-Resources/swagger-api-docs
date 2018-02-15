@@ -184,3 +184,9 @@ definitions:
         example: '-2.627811'
       department:
         $ref: '#/definitions/Department'
+      displayCscContent:
+        type: boolean
+        description: Whether or not to display the CS Commissioners Content
+      selectionProcessDetails:
+        type: string
+        description: Information about the selection process
