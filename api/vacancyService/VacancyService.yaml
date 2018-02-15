@@ -173,6 +173,10 @@ definitions:
         format: int64
       name:
         type: string
+      disabilityLogo:
+        type: string
+        description: There are three levels of disability confident employers
+        example: Committed, Employer, Leader
   Page«Vacancy»:
     type: object
     properties:
@@ -291,10 +295,6 @@ definitions:
       selectionProcessDetails:
         type: string
         description: Information about the selection process
-      disabilityLogo:
-        type: string
-        description: There are three levels of disability confident employers
-        example: Committed, Employer, Leader
   VacancyError:
     type: object
     properties:
