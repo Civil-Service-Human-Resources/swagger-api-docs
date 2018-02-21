@@ -228,6 +228,9 @@ definitions:
       id:
         type: integer
         format: int64
+      applyURL:
+        type: string
+        description: URL linking to external system
       identifier:
         type: integer
         format: int64
