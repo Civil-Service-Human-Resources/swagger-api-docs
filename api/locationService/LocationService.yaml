@@ -51,4 +51,8 @@ definitions:
         type: number
         format: double
         example: -2.4509024
+      region:
+        type: string
+        description: First level NUTS of the UK Region
+        example: South West
 
