@@ -298,6 +298,10 @@ definitions:
       selectionProcessDetails:
         type: string
         description: Information about the selection process
+      regions:
+          type: string
+          description: CSV of NUTS regions
+          example: 'South West, Scotland, London'
   VacancyError:
     type: object
     properties:
